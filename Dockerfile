@@ -1,6 +1,7 @@
 FROM ubuntu:18.10
 MAINTAINER Kazunori Sakamoto
 
+ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
 RUN apt update \
