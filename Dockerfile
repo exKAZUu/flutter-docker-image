@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM runmymind/docker-android-sdk
 MAINTAINER Kazunori Sakamoto
 
 ENV DEBIAN_FRONTEND=noninteractive
