@@ -1,6 +1,7 @@
 FROM runmymind/docker-android-sdk
 MAINTAINER Kazunori Sakamoto
 
+ENV FLUTTER_VERSION 1.2.1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
@@ -22,7 +23,7 @@ RUN apt update \
   " \
   && pwd \
   && cd \
-  && wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.2.1-stable.tar.xz \
+  && wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
