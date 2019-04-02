@@ -27,8 +27,7 @@ RUN apt update \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
   && bash -l -c " \
-    flutter precache \
-    && flutter doctor \
-    && flutter upgrade \
+    flutter upgrade \
+    && flutter precache \
   " \
   && rm -Rf ~/.sdkman/archives/* ~/.sdkman/tmp/*
