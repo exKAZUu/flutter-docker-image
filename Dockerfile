@@ -21,10 +21,14 @@ RUN apt update \
     yes | sdk install java \
     && sdk install gradle \
   " \
-  && pwd \
   && cd \
-  && wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
+  && wget -nv https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
+  && bash -l -c " \
+    flutter precache \
+    && flutter doctor \
+    && flutter upgrade \
+  " \
   && rm -Rf ~/.sdkman/archives/* ~/.sdkman/tmp/*
