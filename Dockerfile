@@ -23,9 +23,5 @@ RUN apt update \
   && wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.2.1-stable.tar.xz \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
-  && bash -l -c " \
-    flutter precache \
-    && flutter doctor \
-  " \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
   && rm -Rf ~/.sdkman/archives/* ~/.sdkman/tmp/*
