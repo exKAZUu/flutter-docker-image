@@ -18,8 +18,8 @@ RUN apt update \
   && echo 'export SDKMAN_DIR="/root/.sdkman"' >> ~/.profile \
   && echo '[[ -s "/root/.sdkman/bin/sdkman-init.sh" ]] && source "/root/.sdkman/bin/sdkman-init.sh"' >> ~/.profile \
   && bash -l -c " \
-    yes | sdk install java \
-    && sdk install gradle \
+    yes | sdk install java > /dev/null \
+    && sdk install gradle > /dev/null \
   " \
   && cd \
   && wget -nv https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
