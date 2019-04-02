@@ -20,6 +20,8 @@ RUN apt update \
     yes | sdk install java \
     && sdk install gradle \
   " \
+  && pwd \
+  && cd \
   && wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.2.1-stable.tar.xz \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
