@@ -5,14 +5,14 @@ ENV FLUTTER_VERSION 1.2.1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
-RUN apt update \
-  && apt dist-upgrade -y -q \
-  && apt install -y -q tzdata build-essential curl wget dirmngr zip unzip dos2unix \
-  && apt update -q \
-  && apt dist-upgrade -y -q \
-  && apt purge -y -q man \
-  && apt autoremove -y -q \
-  && apt clean -y -q \
+RUN apt-get update -q \
+  && apt-get dist-upgrade -y -q \
+  && apt-get install -y -q tzdata build-essential curl wget dirmngr zip unzip dos2unix \
+  && apt-get update -q \
+  && apt-get dist-upgrade -y -q \
+  && apt-get purge -y -q man \
+  && apt-get autoremove -y -q \
+  && apt-get clean -y -q \
   && rm -rf /var/lib/apt/lists/* /tmp/* \
   && curl -s https://get.sdkman.io | bash \
   && echo 'export SDKMAN_DIR="/root/.sdkman"' >> ~/.profile \
