@@ -14,13 +14,6 @@ RUN apt-get update -q \
   && apt-get autoremove -y -q \
   && apt-get clean -y -q \
   && rm -rf /var/lib/apt/lists/* /tmp/* \
-#  && curl -s https://get.sdkman.io | bash \
-#  && echo 'export SDKMAN_DIR="/root/.sdkman"' >> ~/.profile \
-#  && echo '[[ -s "/root/.sdkman/bin/sdkman-init.sh" ]] && source "/root/.sdkman/bin/sdkman-init.sh"' >> ~/.profile \
-#  && bash -l -c " \
-#    yes | sdk install java > /dev/null \
-#    && sdk install gradle > /dev/null \
-#  " \
   && cd \
   && wget -nv https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
   && tar xf flutter*.tar.xz \
@@ -29,8 +22,7 @@ RUN apt-get update -q \
   && bash -l -c " \
     flutter upgrade \
     && flutter precache \
-  " \
-  && rm -Rf ~/.sdkman/archives/* ~/.sdkman/tmp/*
+  "
 
 ENV PATH $PATH:/root/flutter/bin
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
