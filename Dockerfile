@@ -22,6 +22,13 @@ RUN apt-get update -q \
   && bash -l -c " \
     flutter upgrade \
     && flutter precache \
+    && git clone https://github.com/exKAZUu/integration_test_sample.git \
+    && cd integration_test_sample \
+    && flutter packages get \
+    && flutter test \
+    && flutter drive --target=test_driver/app.dart \
+    && cd .. \
+    && rm -Rf integration_test_sample
   "
 
 ENV PATH $PATH:/root/flutter/bin
