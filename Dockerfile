@@ -10,7 +10,7 @@ ENV DEVICE_ID 16
 
 RUN apt-get update -q \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> ~/.profile \
-  && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> ~/.profile \
+  && echo 'export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> ~/.profile \
   && bash -l -c ' \
     avdmanager list \
     && sdkmanager "$IMAGE_NAME" \
