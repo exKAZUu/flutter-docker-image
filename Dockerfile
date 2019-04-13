@@ -9,8 +9,8 @@ ENV IMAGE_NAME="system-images;android-28;google_apis;x86"
 ENV DEVICE_ID=16
 
 RUN apt-get update -q \
-  && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
-  && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> .profile \
+  && echo 'export PATH="$PATH:/root/flutter/bin"' >> ~/.profile \
+  && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> ~/.profile \
   && bash -l -c ' \
     sdkmanager tools \
     && avdmanager list \
