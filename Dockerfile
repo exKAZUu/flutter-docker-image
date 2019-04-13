@@ -1,12 +1,12 @@
 FROM runmymind/docker-android-sdk
 MAINTAINER Kazunori Sakamoto
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Tokyo
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ Asia/Tokyo
 ENV FLUTTER_VERSION 1.2.1
-ENV AVD_NAME="384x640_mdpi_api_23"
-ENV IMAGE_NAME="system-images;android-28;google_apis;x86"
-ENV DEVICE_ID=16
+ENV AVD_NAME 384x640_mdpi_api_23
+ENV IMAGE_NAME system-images;android-28;google_apis;x86
+ENV DEVICE_ID 16
 
 RUN apt-get update -q \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> ~/.profile \
