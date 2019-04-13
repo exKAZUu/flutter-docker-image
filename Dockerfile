@@ -27,6 +27,7 @@ RUN apt-get update -q \
     && flutter packages get \
     && flutter test \
     && flutter emulators \
+    && emulator -list-avds \
     && flutter drive --target=test_driver/app.dart \
     && cd .. \
     && rm -Rf integration_test_sample \
