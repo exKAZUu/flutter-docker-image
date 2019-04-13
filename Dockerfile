@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Tokyo
 ENV FLUTTER_VERSION 1.2.1
 ENV AVD_NAME Nexus5
-ENV IMAGE_NAME system-images;android-28;google_apis;x86
+ENV IMAGE_NAME system-images;android-25;google_apis;armeabi-v7a
 ENV DEVICE_ID 16
 
 RUN apt-get update -q \
