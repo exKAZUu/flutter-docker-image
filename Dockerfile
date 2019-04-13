@@ -19,6 +19,8 @@ RUN apt-get update -q \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
+  && mkdir "$ANDROID_HOME/licenses" \
+  && echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" \
   && bash -l -c " \
     flutter upgrade \
     && flutter precache \
@@ -28,6 +30,7 @@ RUN apt-get update -q \
     && flutter test \
     && flutter emulators \
     && emulator -list-avds \
+    && sdkmanager tools \
     && flutter drive --target=test_driver/app.dart \
     && cd .. \
     && rm -Rf integration_test_sample \
