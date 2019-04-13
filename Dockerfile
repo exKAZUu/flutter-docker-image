@@ -4,7 +4,7 @@ MAINTAINER Kazunori Sakamoto
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Asia/Tokyo
 ENV FLUTTER_VERSION 1.2.1
-ENV AVD_NAME 384x640_mdpi_api_23
+ENV AVD_NAME Nexus5
 ENV IMAGE_NAME system-images;android-28;google_apis;x86
 ENV DEVICE_ID 16
 
@@ -16,6 +16,7 @@ RUN apt-get update -q \
     && sdkmanager "$IMAGE_NAME" \
     && sdkmanager --licenses \
     && avdmanager create avd -n "$AVD_NAME" -k "$IMAGE_NAME" -d "$DEVICE_ID" \
+    && emulator -avd "$AVD_NAME" -no-skin -no-audio -no-window \
   ' \
   && apt-get dist-upgrade -y -q \
   && apt-get install -y -q tzdata build-essential curl wget dirmngr zip unzip dos2unix \
