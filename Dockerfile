@@ -1,9 +1,16 @@
 FROM runmymind/docker-android-sdk
 MAINTAINER Kazunori Sakamoto
 
-ENV FLUTTER_VERSION 1.2.1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
+ENV FLUTTER_VERSION 1.2.1
+ENV AVD_NAME="384x640_mdpi_api_23"
+ENV CREATE_AVD_COMMAND="android create avd \
+ --name ${AVD_NAME} \
+ --target android-28 \
+ --skin 384x640 \
+ --abi google_apis/x86_64 \
+ --force"
 
 RUN apt-get update -q \
   && apt-get dist-upgrade -y -q \
@@ -18,9 +25,7 @@ RUN apt-get update -q \
   && wget -nv https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v$FLUTTER_VERSION-stable.tar.xz \
   && tar xf flutter*.tar.xz \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> .profile \
-  && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"' >> .profile \
-  && mkdir "$ANDROID_HOME/licenses" \
-  && echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" \
+  && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> .profile \
   && bash -l -c " \
     flutter upgrade \
     && flutter precache \
@@ -37,4 +42,4 @@ RUN apt-get update -q \
   "
 
 ENV PATH $PATH:/root/flutter/bin
-ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
