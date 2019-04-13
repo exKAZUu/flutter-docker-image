@@ -12,9 +12,10 @@ RUN apt-get update -q \
   && echo 'export PATH="$PATH:/root/flutter/bin"' >> ~/.profile \
   && echo 'export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"' >> ~/.profile \
   && bash -l -c ' \
-    sdkmanager tools \
-    && avdmanager list \
-    && avdmanager create avd -n $AVD_NAME -k "$IMAGE_NAME" -d $DEVICE_ID \
+    avdmanager list \
+    && sdkmanager "$IMAGE_NAME" \
+    && sdkmanager --licenses \
+    && avdmanager create avd -n "$AVD_NAME" -k "$IMAGE_NAME" -d "$DEVICE_ID" \
   ' \
   && apt-get dist-upgrade -y -q \
   && apt-get install -y -q tzdata build-essential curl wget dirmngr zip unzip dos2unix \
