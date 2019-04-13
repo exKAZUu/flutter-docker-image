@@ -28,7 +28,7 @@ RUN apt-get update -q \
     && flutter test \
     && flutter drive --target=test_driver/app.dart \
     && cd .. \
-    && rm -Rf integration_test_sample
+    && rm -Rf integration_test_sample \
   "
 
 ENV PATH $PATH:/root/flutter/bin
